@@ -13,10 +13,21 @@ const forecast = (lat, lon, callback) => {
         } else if (body.message) {
             callback('Invalid coordinates. Try another search.', undefined)
         } else {
+            console.log(body.main.feels_like)
+            let description = body.weather[0].description.charAt(0).toUpperCase() + body.weather[0].description.slice(1),
+                temperature = body.main.temp,
+                feels_like = body.main.feels_like,
+                temp_min = body.main.temp_min,
+                temp_max = body.main.temp_max,
+                humidity = body.main.humidity
+
             callback(undefined, {
-                description: body.weather[0].description,
-                temperature: body.main.temp,
-                humidity: body.main.humidity
+                description,
+                temperature,
+                feels_like,
+                temp_min,
+                temp_max,
+                humidity
             })
         }
     })

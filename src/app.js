@@ -57,35 +57,16 @@ app.get('/weather', (req, res) => {
         // The forecast function takes a callback as the 3rd parameter.
         // The 2nd parameter of the callback takes an object.
         // We can use object destructuring to retrieve those properties.
-        forecast(latitude, longitude, (error, {description, temperature, humidity} = {}) => {
+        forecast(latitude, longitude, (error, {description, temperature, feels_like, temp_min, temp_max, humidity} = {}) => {
             if (error) {
                 // Object property shorthand - error: error === error
                 return res.send({ error })
             }
 
-            res.send({ location, description, temperature, humidity })
+            res.send({ location, description, temperature, feels_like, temp_min, temp_max, humidity })
         })
     })
 
-})
-
-app.get('/products', (req, res) => {
-    if (!req.query.search) {
-        return res.send({
-            error: 'You must provide a search term!'
-        })
-    }
-    console.log(req.query.search)
-    res.send({
-        products: []
-    })
-})
-
-app.get('/help/*', (req, res) => {
-    res.render('404', {
-        title: '404 - Page not found',
-        errorMessage: 'Help article not found. This is not the way!'
-    })
 })
 
 //404 error page. This has to come last because

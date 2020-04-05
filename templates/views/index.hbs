@@ -6,15 +6,27 @@
 
         <main role="main" class="container">
             <h1>{{title}}</h1>
-            <p>Welcome to a simple weather app created by Joshua Osburn while following <u>The Complete Node.js Developer Course (3rd Edition) on Udemy</u>!</p>
+            <p>Check the latest weather data at a specific location!</p>
             <form>
                 <div class="form-group">
-                    <input class="form-control" id="locationInput" placeholder="city, state">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">City, State</span>
+                        </div>
+                        <input class="form-control" id="locationInput" placeholder="city, state">
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <p id="locationMessage"></p>
-            <p id="weatherData"></p>
+            <ul class="list-group">
+                <li class="list-group-item" id="location">Cras justo odio</li>
+                <li class="list-group-item" id="description">Dapibus ac facilisis in</li>
+                <li class="list-group-item" id="feels_like">Vestibulum at eros</li>
+                <li class="list-group-item" id="temperature">Morbi leo risus</li>
+                <li class="list-group-item" id="temp_min">Porta ac consectetur ac</li>
+                <li class="list-group-item" id="temp_max">Vestibulum at eros</li>
+                <li class="list-group-item" id="humidity">Vestibulum at eros</li>
+            </ul>       
         </main>
 
         {{>footer}}
