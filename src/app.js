@@ -7,6 +7,8 @@ const hbs = require('hbs')
 
 // VARIABLES
 const app = express()
+// Heroku defined port or fallback to 3000
+const port = process.env.PORT || 3000
 const geocode = require('../src/utils/geocode')
 const forecast = require('../src/utils/forecast')
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -95,6 +97,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server has started on port 3000...')
+app.listen(port, () => {
+    console.log('Server has started on port ' + port)
 })
